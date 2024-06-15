@@ -22,10 +22,12 @@ const LoginForm = ({ login }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       let res = await exerciseArmoryApi.login(formData);
       await login(res, formData.username);
       history.push("/");
     } catch (err) {
+      setIsLoading(false)
       setErrors(err.message ? ["Unkown Issue. Try again later."] : err);
     }
   };

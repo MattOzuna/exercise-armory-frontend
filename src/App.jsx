@@ -41,9 +41,9 @@ function App() {
                 <ExerciseDetails />
               </ProtectedRoute>
               <Route>
-                <p className="text-warning font-weight-bold my-5">
+                <h1 className="text-danger my-5">
                   Hmmm. I can't seem to find what you want.
-                </p>
+                </h1>
               </Route>
             </Switch>
           </main>

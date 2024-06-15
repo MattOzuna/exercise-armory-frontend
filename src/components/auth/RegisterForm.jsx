@@ -24,10 +24,12 @@ const RegisterForm = ({ register }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       let res = await exerciseArmoryApi.registerNewUser(formData);
       await register(res, formData.username);
       history.push("/");
     } catch (err) {
+      setIsLoading(false)
       setErrors(err.message ? ['Unkown Issue. Try again later.'] : err);
     }
   };
