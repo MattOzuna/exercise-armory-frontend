@@ -1,12 +1,12 @@
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
+import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
 
 import exerciseArmoryApi from "../../api/api";
-
 
 const ExerciseDetails = () => {
   const { id } = useParams();
@@ -30,13 +30,22 @@ const ExerciseDetails = () => {
     );
   }
   return (
-    <Container className="justify-content-md-center align-content-md-center">
+    <Container className="justify-content-md-center">
       <Row>
         <Card>
           <Card.Body>
-            <Card.Img variant="left" src={exercise.gifUrl}></Card.Img>
-            <Card.Title>{exercise.name}</Card.Title>
-            <Card.Text>{exercise.target}</Card.Text>
+            <Card.Title>
+              {exercise.name}
+            </Card.Title>
+              <div>
+                Instructions: 
+                <ol>
+                  {exercise.instructions.map((instruction) => (
+                    <li key={uuidv4()}>{instruction}</li>
+                  ))}
+                </ol>
+              </div>
+            
           </Card.Body>
         </Card>
       </Row>

@@ -9,8 +9,6 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import ExerciseDetails from "./components/exercises/ExerciseDetails";
 
-import exerciseArmoryApi from "./api/api";
-
 import "./App.css";
 
 function App() {

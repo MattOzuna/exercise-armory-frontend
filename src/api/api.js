@@ -66,9 +66,5 @@ class exerciseArmoryApi {
   }
 }
 
-// exerciseArmoryApi.token =
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2Vybm" +
-//   "FtZSI6IkFkbWludXNlciIsImlzQWRtaW4iOmZhbHNlLCJp" +
-//   "YXQiOjE3MTgzMjcxMDZ9.GufeX_A3hFrcboChM54xn1sa6kJVyugThRXCcWLRonY";
 
 export default exerciseArmoryApi;

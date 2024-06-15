@@ -56,7 +56,7 @@ const ExerciseSearch = () => {
         <ListGroup>
           {exercises.map((exercise) => (
             <ListGroup.Item key={exercise.id}>
-              <Link to={`/exercises/${exercise.id}`}>{exercise.name}</Link>
+              <Link to={`/exercises/${exercise.id}`} className="text-decoration-none">{exercise.name}</Link>
             </ListGroup.Item>
           ))}
         </ListGroup>
