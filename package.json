@@ -19,6 +19,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.3.4",
     "uuid": "^10.0.0",
+    "@vitejs/plugin-react": "^4.2.1",
     "vite": "^5.2.0"
   },
   "devDependencies": {
@@ -28,7 +29,6 @@
     "@testing-library/jest-dom": "^6.4.6",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
-    "@vitejs/plugin-react": "^4.2.1",
     "babel-jest": "^29.7.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
