@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useState } from "react";
 import { UserContext } from "./components/UserContext";
 
 import ProtectedRoute from "./helpers/ProtectedRoute";
+import useLocalStorageState from "./hooks/useLocalStorageState";
 import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";
 import Navbar from "./components/Navbar";
@@ -12,7 +12,7 @@ import ExerciseDetails from "./components/exercises/ExerciseDetails";
 import "./App.css";
 
 function App() {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useLocalStorageState({});
   const register = (token, username) => setUserData({ token, username });
 
   const login = async (token, username) => {
@@ -42,7 +42,7 @@ function App() {
               </ProtectedRoute>
               <Route>
                 <h1 className="text-danger my-5">
-                  Hmmm. I can't seem to find what you want.
+                  Hmmm. I can't seem to find what you're looking for.
                 </h1>
               </Route>
             </Switch>
