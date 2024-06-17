@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
 
 import exerciseArmoryApi from "../../api/api";
-import ExerciseAccordion from "./ExerciseAccordion";
 
 const ExerciseSearch = () => {
   const [exercises, setExercises] = useState([]);
@@ -54,9 +53,14 @@ const ExerciseSearch = () => {
           </Spinner>
         ) : null}
         <ListGroup>
-          {exercises.map((exercise) => (
+          {exercises.slice(0, 5).map((exercise) => (
             <ListGroup.Item key={exercise.id}>
-              <Link to={`/exercises/${exercise.id}`} className="text-decoration-none">{exercise.name}</Link>
+              <Link
+                to={`/exercises/${exercise.id}`}
+                className="text-decoration-none"
+              >
+                {exercise.name}
+              </Link>
             </ListGroup.Item>
           ))}
         </ListGroup>

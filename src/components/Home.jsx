@@ -26,7 +26,7 @@ const Home = () => {
   }
   return (
     <>
-      <h1 className="my-5">Welcome to the Armory, {userData.username}!</h1>
+      <h1 className="text-center my-5">Welcome to the Armory, {userData.username}!</h1>
       <div>
         <ExerciseSearch />
       </div>

@@ -10,7 +10,7 @@ function NavBar() {
 
   if (!userData.token) {
     return (
-      <Navbar className="bg-body-tertiary" sticky="top" data-bs-theme="light">
+      <Navbar className="bg-body-tertiary" sticky="top" data-bs-theme="dark">
         <Container>
           <Nav className="me-auto">
             <NavLink className="navbar-brand" to="/">
@@ -32,7 +32,7 @@ function NavBar() {
   }
 
   return (
-    <Navbar className="bg-body-tertiary" sticky="top" data-bs-theme="light">
+    <Navbar className="bg-body-tertiary w-100" sticky="top" data-bs-theme="dark">
       <Container>
         <Nav className="me-auto">
           <NavLink className="navbar-brand" to="/">

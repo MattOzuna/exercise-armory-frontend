@@ -41,7 +41,7 @@ function App() {
                 <ExerciseDetails />
               </ProtectedRoute>
               <Route>
-                <h1 className="text-danger my-5">
+                <h1 className="text-danger my-5 text-center">
                   Hmmm. I can't seem to find what you're looking for.
                 </h1>
               </Route>

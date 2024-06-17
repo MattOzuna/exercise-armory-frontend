@@ -7,6 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
 
 import exerciseArmoryApi from "../../api/api";
+import capitilize from "../../helpers/capitilize";
 
 const ExerciseDetails = () => {
   const { id } = useParams();
@@ -16,6 +17,7 @@ const ExerciseDetails = () => {
   useEffect(() => {
     const fetchExercise = async (id) => {
       let res = await exerciseArmoryApi.getExercise(id);
+      res.name = capitilize(res.name);
       setExercise(res);
       setIsLoading(false);
     };
@@ -24,28 +26,27 @@ const ExerciseDetails = () => {
 
   if (isLoading) {
     return (
-      <Spinner animation="border" role="status">
+      <Spinner animation="border" role="status" className="text-center">
         <span className="visually-hidden">Loading...</span>
       </Spinner>
     );
   }
   return (
-    <Container className="justify-content-md-center">
+    <Container className="my-5 w-75">
       <Row>
         <Card>
           <Card.Body>
-            <Card.Title>
+            <Card.Title className="text-center">
               {exercise.name}
             </Card.Title>
-              <div>
-                Instructions: 
-                <ol>
-                  {exercise.instructions.map((instruction) => (
-                    <li key={uuidv4()}>{instruction}</li>
-                  ))}
-                </ol>
-              </div>
-            
+            <div>
+              <b className="mx-4">Instructions:</b>
+              <ol>
+                {exercise.instructions.map((instruction) => (
+                  <li key={uuidv4()}>{instruction}</li>
+                ))}
+              </ol>
+            </div>
           </Card.Body>
         </Card>
       </Row>
