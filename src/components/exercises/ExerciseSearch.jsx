@@ -1,39 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Spinner from "react-bootstrap/Spinner";
 import { Link } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
+import { capitilize, findExercises } from "../../helpers/helpers";
 
-import exerciseArmoryApi from "../../api/api";
-
-const ExerciseSearch = () => {
-  const [exercises, setExercises] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+const ExerciseSearch = ({ exercises }) => {
+  const [foundExercises, setFoundExercises] = useState([]);
   const [searchTerm, setSearchTerm] = useState({ name: "" });
   const [touched, setTouched] = useState(false);
 
   const handleChange = (e) => {
     setTouched(e.target.value ? true : false);
     setSearchTerm(e.target.value ? { name: e.target.value } : { name: "" });
-    setExercises([]);
+    setFoundExercises(
+      e.target.value ? findExercises(exercises, e.target.value) : []
+    );
   };
-
-  useEffect(() => {
-    const fetchExercises = async () => {
-      try {
-        const res = await exerciseArmoryApi.getExercises(searchTerm);
-        setExercises(res);
-        setIsLoading(false);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    if (touched && searchTerm.name.length > 2) {
-      fetchExercises();
-    }
-  }, [searchTerm, touched]);
 
   return (
     <Container className="w-50">
@@ -46,14 +29,8 @@ const ExerciseSearch = () => {
         />
       </Row>
       <Row className="justify-content-center">
-        {isLoading && touched ? (
-          <Spinner animation="border" role="status">
-            {" "}
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-        ) : null}
         <ListGroup>
-          {exercises.slice(0, 5).map((exercise) => (
+          {foundExercises.slice(0, 5).map((exercise) => (
             <ListGroup.Item key={exercise.id}>
               <Link
                 to={`/exercises/${exercise.id}`}

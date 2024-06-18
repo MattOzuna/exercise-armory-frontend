@@ -27,21 +27,23 @@ const LoginForm = ({ login }) => {
       await login(res, formData.username);
       history.push("/");
     } catch (err) {
-      setIsLoading(false)
+      setIsLoading(false);
       setErrors(err.message ? ["Unkown Issue. Try again later."] : err);
     }
   };
 
   if (isLoading) {
     return (
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
+      <div className="w-50 mx-auto text-center">
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
     );
   }
 
   return (
-    <div className="w-50 mx-auto">
+    <div className="w-50 mx-auto text-center">
       <Form onSubmit={handleSubmit}>
         <h2 className="my-4">Login</h2>
         {errors.map((error) => (

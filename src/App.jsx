@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { UserContext } from "./components/UserContext";
 
-import ProtectedRoute from "./helpers/ProtectedRoute";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import useLocalStorageState from "./hooks/useLocalStorageState";
 import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";

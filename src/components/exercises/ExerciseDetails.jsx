@@ -7,7 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
 
 import exerciseArmoryApi from "../../api/api";
-import capitilize from "../../helpers/capitilize";
+import { capitilize } from "../../helpers/helpers";
 
 const ExerciseDetails = () => {
   const { id } = useParams();
@@ -26,9 +26,11 @@ const ExerciseDetails = () => {
 
   if (isLoading) {
     return (
-      <Spinner animation="border" role="status" className="text-center">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
+      <Container className="my-5 w-75 text-center">
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </Container>
     );
   }
   return (
@@ -36,9 +38,7 @@ const ExerciseDetails = () => {
       <Row>
         <Card>
           <Card.Body>
-            <Card.Title className="text-center">
-              {exercise.name}
-            </Card.Title>
+            <Card.Title className="text-center">{exercise.name}</Card.Title>
             <div>
               <b className="mx-4">Instructions:</b>
               <ol>
