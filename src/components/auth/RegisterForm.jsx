@@ -46,8 +46,8 @@ const RegisterForm = ({ register }) => {
 
   return (
     <div className="w-50 mx-auto text-center">
-      <Form className="" onSubmit={handleSubmit}>
-        <h2 className="my-4">Sign up</h2>
+      <Form onSubmit={handleSubmit}>
+        <h2 className="my-4 bebas-neue-regular">Sign up</h2>
         {errors.map((error) => (
           <div className="text-danger" key={uuidv4()}>
             {error}

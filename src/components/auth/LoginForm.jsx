@@ -45,7 +45,7 @@ const LoginForm = ({ login }) => {
   return (
     <div className="w-50 mx-auto text-center">
       <Form onSubmit={handleSubmit}>
-        <h2 className="my-4">Login</h2>
+        <h2 className="my-4 bebas-neue-regular">Login</h2>
         {errors.map((error) => (
           <div className="text-danger" key={uuidv4()}>
             {error}

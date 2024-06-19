@@ -25,7 +25,7 @@ const ExerciseSearch = ({ exercises }) => {
           type="text"
           placeholder="Search for an exercise"
           onChange={handleChange}
-          className="form-control"
+          className="form-control rounded-pill"
         />
       </Row>
       <Row className="justify-content-center">

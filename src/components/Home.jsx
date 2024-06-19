@@ -21,7 +21,6 @@ const Home = () => {
         setIsLoading(false);
       } catch (err) {
         setError(true);
-        console.log("error: ", error);  
         setIsLoading(false);
         console.error(err);
       }
@@ -34,11 +33,12 @@ const Home = () => {
 
   if (isLoading && userData.token) {
     return (
-      <Container className="w-50 text-center">
+      <Container className="w-50 text-center my-5">
         <Spinner animation="border" role="status">
           {" "}
-          <span className="visually-hidden text-center">Loading...</span>
+          <span className="visually-hidden">Loading...</span>
         </Spinner>
+        <span className="text-warning">First time loading can take a while.</span>
       </Container>
     );
   }
@@ -50,7 +50,7 @@ const Home = () => {
   if (!userData.token) {
     return (
       <Container className="text-center">
-        <h1 className="my-5">Welcome to Exercise Armory!</h1>
+        <h1 className="my-5 bebas-neue-regular">Welcome to the Exercise Armory!</h1>
         <div>
           <span className="mx-5">
             <Link to="/login" className="btn btn-primary">
@@ -68,8 +68,8 @@ const Home = () => {
   }
   return (
     <>
-      <h1 className="text-center my-5">
-        Welcome to the Armory, {userData.username}!
+      <h1 className="text-center my-5 bebas-neue-regular">
+        The Exercise Armory
       </h1>
       <div>
         <ExerciseSearch exercises={exercises} />
