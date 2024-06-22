@@ -1,13 +1,12 @@
 import { useParams } from "react-router-dom";
-import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
-import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import Row from "react-bootstrap/Row";
 
 import exerciseArmoryApi from "../../api/api";
 import { capitilize } from "../../helpers/helpers";
+import ExerciseCard from "./ExerciseCard";
 
 const ExerciseDetails = () => {
   const { id } = useParams();
@@ -36,19 +35,7 @@ const ExerciseDetails = () => {
   return (
     <Container className="my-5 w-75">
       <Row>
-        <Card>
-          <Card.Body>
-            <Card.Title className="text-center">{exercise.name}</Card.Title>
-            <div>
-              <b className="mx-4">Instructions:</b>
-              <ol>
-                {exercise.instructions.map((instruction) => (
-                  <li key={uuidv4()}>{instruction}</li>
-                ))}
-              </ol>
-            </div>
-          </Card.Body>
-        </Card>
+        <ExerciseCard exercise={exercise} />
       </Row>
     </Container>
   );

@@ -8,6 +8,9 @@ import RegisterForm from "./components/auth/RegisterForm";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import ExerciseDetails from "./components/exercises/ExerciseDetails";
+import UserDetails from "./components/users/UserDetails";
+import WorkoutsDetails from "./components/workouts/WorkoutsDetails";
+import ExerciseList from "./components/exercises/ExerciseList";
 
 import "./App.css";
 
@@ -20,7 +23,7 @@ function App() {
   };
 
   const logout = () => setUserData({});
-  
+
   return (
     <>
       <UserContext.Provider value={{ userData, logout }}>
@@ -40,8 +43,17 @@ function App() {
               <ProtectedRoute exact path="/exercises/:id">
                 <ExerciseDetails />
               </ProtectedRoute>
+              <ProtectedRoute exact path="/users/:username">
+                <UserDetails />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/users/:username/workouts/:id">
+                <WorkoutsDetails />
+              </ProtectedRoute>
+              <ProtectedRoute exact path="/users/:username/workouts/:id/exercises">
+                <ExerciseList />
+              </ProtectedRoute>
               <Route>
-                <h1 className="text-danger my-5 text-center">
+                <h1 className="text-danger my-5 text-center bebas-neue-regular">
                   Hmmm. I can't seem to find what you're looking for.
                 </h1>
               </Route>

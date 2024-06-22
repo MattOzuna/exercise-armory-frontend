@@ -3,16 +3,12 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";
-import { capitilize, findExercises } from "../../helpers/helpers";
+import { findExercises } from "../../helpers/helpers";
 
 const ExerciseSearch = ({ exercises }) => {
   const [foundExercises, setFoundExercises] = useState([]);
-  const [searchTerm, setSearchTerm] = useState({ name: "" });
-  const [touched, setTouched] = useState(false);
 
   const handleChange = (e) => {
-    setTouched(e.target.value ? true : false);
-    setSearchTerm(e.target.value ? { name: e.target.value } : { name: "" });
     setFoundExercises(
       e.target.value ? findExercises(exercises, e.target.value) : []
     );

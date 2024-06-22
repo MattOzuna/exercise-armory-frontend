@@ -16,8 +16,6 @@ class exerciseArmoryApi {
   static async request(endpoint, data = {}, method = "get") {
     console.debug("API Call:", endpoint, data, method);
 
-    //there are multiple ways to pass an authorization token, this is how you pass it in the header.
-    //this has been provided to show you another way to pass the token. you are only expected to read this code for this project.
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${exerciseArmoryApi.token}` };
     const params = method === "get" ? data : {};
@@ -25,7 +23,7 @@ class exerciseArmoryApi {
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
-      console.error("API Error:", err.response);
+      // console.error("API Error:", err.response);
       let message = err.response.data.error.message;
       throw Array.isArray(message) ? message : [message];
     }
@@ -43,6 +41,8 @@ class exerciseArmoryApi {
     return res.exercises;
   }
 
+  //==============================================================================//
+
   /**
    * register a user
    * @param {object} data {username, password, firstName, lastName, email}
@@ -54,6 +54,7 @@ class exerciseArmoryApi {
     return res.token;
   }
 
+  //==============================================================================//
   /**
    * login a user
    * @param {object} data {username, password}
@@ -64,7 +65,84 @@ class exerciseArmoryApi {
     exerciseArmoryApi.token = res.token;
     return res.token;
   }
-}
 
+  //==============================================================================//
+  /**
+   * get a user by username
+   * @param {string} username
+   * @returns {object} user {username, firstName, lastName, email, workouts}
+   *
+   */
+  static async getUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
+
+  //==============================================================================//
+
+  /**
+   * create a workout
+   * @param {string} username
+   * @param {object} data {exercises, notes}
+   * @returns {object} workout {id, notes, exercises}
+   *
+   */
+  static async createWorkout(username, data) {
+    let res = await this.request(`users/${username}/workouts`, data, "post");
+    return res.workout;
+  }
+  //==============================================================================//
+
+  /**
+   * get a wrokout by id
+   * @param {string} username
+   * @param {string} id - workout id
+   * @returns {workout} workouts [{id, name, description, exercises}]
+   */
+  static async getWorkout(username, id) {
+    let res = await this.request(`users/${username}/workouts/${id}`);
+    return res.workout;
+  }
+
+  //==============================================================================//
+
+
+  static async editExerciseToWorkout(username, id, data) {
+    let res = await this.request(
+      `users/${username}/workouts/${id}`,
+      data,
+      "patch"
+    );
+    return res.exercises;
+  }
+  //==============================================================================//
+
+  /**
+   * update exercises for a workout
+   * @param {string} username
+   * @param {string} id - workout id
+   * @param {object} data {exercises: [{exerciseId, sets, reps}]}
+   * @returns {array} exercises [{exerciseId, sets, reps, weight}]
+   *
+   */
+  static async updateWorkoutExercises(username, id, data) {
+    let res = await this.request(
+      `users/${username}/workouts/${id}/exercises`,
+      data,
+      "patch"
+    );
+    return res.exercises;
+  }
+
+  //==============================================================================//
+  /**
+   * delkete a workout
+   * @param {string} username
+   * @param {string} id - workout id
+   */
+  static async deleteWorkout(username, id) {
+    await this.request(`users/${username}/workouts/${id}`, {}, "delete");
+  }
+}
 
 export default exerciseArmoryApi;

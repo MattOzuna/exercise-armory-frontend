@@ -16,13 +16,17 @@ const capitilize = (str) => {
  *
  * @param {Array} exercises
  * @param {string} searchTerm
+ * @param {Array} excludedIds - An array of ids to exclude from the search
  * @returns {Array} - An array of exercises that contain the search term
  *
  */
-const findExercises = (exercises, searchTerm) => {
+const findExercises = (exercises, searchTerm, excludedIds = []) => {
   const foundExercises = [];
   for (let i = 0; i < exercises.length; i++) {
-    if (exercises[i].name.includes(searchTerm.toLowerCase())) {
+    if (
+      exercises[i].name.includes(searchTerm.toLowerCase()) &&
+      !excludedIds.includes(exercises[i].id)
+    ) {
       foundExercises.push(exercises[i]);
     }
   }
