@@ -47,7 +47,7 @@ const UserDetails = () => {
       await exerciseArmoryApi.createWorkout(username, {});
       setIsLoading(true);
     } catch (err) {
-      setIsLoading(false);
+      setIsLoading(true);
     }
   };
 
