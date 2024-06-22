@@ -44,8 +44,8 @@ const UserDetails = () => {
   const handleAddWorkout = async (e) => {
     e.preventDefault();
     try {
-      setIsLoading(true);
       await exerciseArmoryApi.createWorkout(username, {});
+      setIsLoading(true);
     } catch (err) {
       setIsLoading(false);
     }
