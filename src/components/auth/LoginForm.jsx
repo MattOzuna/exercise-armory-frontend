@@ -34,7 +34,7 @@ const LoginForm = ({ login }) => {
 
   if (isLoading) {
     return (
-      <div className="w-50 mx-auto text-center">
+      <div className="w-50 mx-auto text-center my-5">
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>

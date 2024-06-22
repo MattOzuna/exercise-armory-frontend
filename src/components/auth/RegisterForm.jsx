@@ -45,7 +45,7 @@ const RegisterForm = ({ register }) => {
   }
 
   return (
-    <div className="w-50 mx-auto text-center">
+    <div className="w-50 mx-auto text-center my-5">
       <Form onSubmit={handleSubmit}>
         <h2 className="my-4 bebas-neue-regular">Sign up</h2>
         {errors.map((error) => (
