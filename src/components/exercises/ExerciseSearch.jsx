@@ -29,7 +29,7 @@ const ExerciseSearch = ({ exercises }) => {
           {foundExercises.slice(0, 5).map((exercise) => (
             <ListGroup.Item key={exercise.id}>
               <Link
-                to={`/exercises/${exercise.id}`}
+                to={{ pathname: `/exercises/${exercise.id}`, state: exercise }}
                 className="text-decoration-none"
               >
                 {exercise.name}

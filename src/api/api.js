@@ -94,7 +94,7 @@ class exerciseArmoryApi {
   //==============================================================================//
 
   /**
-   * get a wrokout by id
+   * get a workout by id
    * @param {string} username
    * @param {string} id - workout id
    * @returns {workout} workouts [{id, name, description, exercises}]

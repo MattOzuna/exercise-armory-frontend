@@ -1,30 +1,52 @@
-# Exercise Armory Frontend
+# Exercise Armory
 
-Welcome to the Exercise Armory Frontend repository! This repository contains the frontend code for the Exercise Armory application.
+## Overview
 
-## Getting Started
+[The Exercise Armory](https://exercise-armory-frontend.onrender.com)
 
-To get started with the Exercise Armory Frontend, follow these steps:
-
-1. Clone this repository to your local machine.
-2. Install the necessary dependencies by running `npm install`.
-3. Start the development server by running `npm run dev`.
-4. Open your browser and navigate to `http://localhost:` to view the application.
+The Exercise Armory is a frontend web application built with React and React Router. This app provides a user-friendly interface for managing exercises and workouts. Users can register, log in, view exercise details, and manage their workout routines. The application includes protected routes to ensure that only authenticated users can access certain features. The App was deployed using [Render](https://render.com/). 
 
 ## Features
 
-The Exercise Armory Frontend provides the following features:
+- User Authentication: Register and log in to access personalized workout plans.
+- Exercise Details: View detailed information about specific exercises.
+- User Details: Access user-specific information and workout routines.
+- Workouts Management: Manage and view details of workout routines.
+- Exercise List: Access and manage exercises within a specific workout.
+- Error Handling: Custom error page for undefined routes.
 
-- User authentication: Users can create an account, log in, and log out.
-- Exercise library: Users can browse and search for exercises from a wide range of categories.
-- Workout planner: Users can create and customize their own workout plans.
+## Routes
 
-## Technologies Used
+The application includes the following routes:
 
-The Exercise Armory Frontend is built using the following technologies:
+- `/`: Home page displaying an overview of the application.
+- `/login`: Login form for user authentication.
+- `/register`: Registration form for new users.
+- `/exercises/:id`: Protected route for viewing details of a specific exercise.
+- `/users/:username`: Protected route for viewing user-specific information.
+- `/users/:username/workouts/:id`: Protected route for viewing details of a specific workout.
+- `/users/:username/workouts/:id/exercises`: Protected route for viewing exercises within a specific workout.
+- `*`: Custom error page for undefined routes.
 
-- React: A JavaScript library for building user interfaces.
-- React-Router: A tool for crient client-side routing
-- Axios: A promise-based HTTP client for making API requests.
-- Bootstrap: A popular CSS framework for building responsive and mobile-first websites.
+## Components
 
+- **Navbar**: The navigation bar that provides links to various parts of the application.
+- **Home**: The homepage component that welcomes users and provides an overview of the app.
+- **LoginForm**: The login form component for user authentication.
+- **RegisterForm**: The registration form component for new users.
+- **ExerciseDetails**: Component for displaying details of a specific exercise.
+- **UserDetails**: Component for displaying user-specific information.
+- **WorkoutsDetails**: Component for displaying details of a specific workout.
+- **ExerciseList**: Component for displaying a list of exercises within a specific workout.
+
+## Protected Routes
+
+The application uses `ProtectedRoute` components to ensure that certain routes are only accessible to authenticated users. This is achieved by wrapping the protected components in a context provider that manages user authentication state.
+
+## Getting Started
+
+To run the application locally, follow these steps:
+
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Start the development server using `npm run dev`.
