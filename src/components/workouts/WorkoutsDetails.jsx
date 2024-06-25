@@ -14,6 +14,7 @@ import Table from "react-bootstrap/Table";
 
 import exerciseArmoryApi from "../../api/api";
 import correctUser from "../../helpers/correctUser";
+import { capitilize } from "../../helpers/helpers";
 
 const WorkoutsDetails = () => {
   const history = useHistory();
@@ -119,7 +120,14 @@ const WorkoutsDetails = () => {
               <tr key={exercise.id + "-inputs"}>
                 <th>{index + 1}</th>
                 <td>
-                  <Link to={{ pathname: `/exercises/${exercise.id}`, state: exercise }}>{exercise.name}</Link>
+                  <Link
+                    to={{
+                      pathname: `/exercises/${exercise.id}`,
+                      state: exercise,
+                    }}
+                  >
+                    {capitilize(exercise.name)}
+                  </Link>
                 </td>
                 <td>
                   <input
