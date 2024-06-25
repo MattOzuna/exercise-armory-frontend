@@ -13,16 +13,16 @@ function NavBar() {
       <Navbar className="bg-body-tertiary bebas-neue-regular" sticky="top" data-bs-theme="dark">
         <Container>
           <Nav className="me-auto">
-            <NavLink className="navbar-brand" to="/">
+            <NavLink className="navbar-brand" exact to="/">
               Home
             </NavLink>
           </Nav>
 
           <Nav className="justify-content-end">
-            <NavLink className="nav-link" to="/login">
+            <NavLink className="nav-link" exact to="/login">
               Login
             </NavLink>
-            <NavLink className="nav-link" to="/register">
+            <NavLink className="nav-link" exact to="/register">
               Sign up
             </NavLink>
           </Nav>
@@ -35,13 +35,13 @@ function NavBar() {
     <Navbar className="bg-body-tertiary w-100 bebas-neue-regular" sticky="top" data-bs-theme="dark">
       <Container>
         <Nav className="me-auto">
-          <NavLink className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" exact to="/">
             Home
           </NavLink>
         </Nav>
 
         <Nav className="justify-content-end">
-          <NavLink className="navbar-brand" to={`/users/${userData.username}`}>
+          <NavLink className="navbar-brand" exact to={`/users/${userData.username}`}>
             {userData.username}
           </NavLink>
           <Nav.Link onClick={logout}>Logout</Nav.Link>

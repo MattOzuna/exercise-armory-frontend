@@ -119,7 +119,7 @@ const WorkoutsDetails = () => {
               <tr key={exercise.id + "-inputs"}>
                 <th>{index + 1}</th>
                 <td>
-                  <Link to={`/exercises/${exercise.id}`}>{exercise.name}</Link>
+                  <Link to={{ pathname: `/exercises/${exercise.id}`, state: exercise }}>{exercise.name}</Link>
                 </td>
                 <td>
                   <input

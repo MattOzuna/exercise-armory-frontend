@@ -1,7 +1,8 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { UserContext } from "./components/UserContext";
+import { BrowserRouter, Route, Switch, Router } from "react-router-dom";
+import * as Sentry from "@sentry/react";
 
-import ProtectedRoute from "./components/auth/ProtectedRoute";
+import { UserContext } from "./components/UserContext";
+import ProtectedRoute from "./components/routeWrappers/ProtectedRoute";
 import useLocalStorageState from "./hooks/useLocalStorageState";
 import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";
@@ -14,8 +15,21 @@ import ExerciseList from "./components/exercises/ExerciseList";
 
 import "./App.css";
 
-function App() {
+function App({ history }) {
   const [userData, setUserData] = useLocalStorageState({});
+
+  // Create Custom Sentry Route component
+  const SentryRoute = Sentry.withSentryRouting(Route);
+
+  Sentry.init({
+    dsn: "https://1cc4afebfa34f2843b91acb8ab5c6472@o4507487353241600.ingest.us.sentry.io/4507490069970944",
+    integrations: [Sentry.reactRouterV5BrowserTracingIntegration({ history })],
+
+    // We recommend adjusting this value in production, or using tracesSampler
+    // for finer control
+    tracesSampleRate: 1.0,
+  });
+
   const register = (token, username) => setUserData({ token, username });
 
   const login = async (token, username) => {
@@ -27,19 +41,19 @@ function App() {
   return (
     <>
       <UserContext.Provider value={{ userData, logout }}>
-        <BrowserRouter>
+        <Router history={history}>
           <Navbar />
           <main className="main">
             <Switch>
-              <Route exact path="/">
+              <SentryRoute exact path="/">
                 <Home />
-              </Route>
-              <Route exact path="/login">
+              </SentryRoute>
+              <SentryRoute exact path="/login">
                 <LoginForm login={login} />
-              </Route>
-              <Route exact path="/register">
+              </SentryRoute>
+              <SentryRoute exact path="/register">
                 <RegisterForm register={register} />
-              </Route>
+              </SentryRoute>
               <ProtectedRoute exact path="/exercises/:id">
                 <ExerciseDetails />
               </ProtectedRoute>
@@ -49,17 +63,20 @@ function App() {
               <ProtectedRoute exact path="/users/:username/workouts/:id">
                 <WorkoutsDetails />
               </ProtectedRoute>
-              <ProtectedRoute exact path="/users/:username/workouts/:id/exercises">
+              <ProtectedRoute
+                exact
+                path="/users/:username/workouts/:id/exercises"
+              >
                 <ExerciseList />
               </ProtectedRoute>
-              <Route>
+              <SentryRoute>
                 <h1 className="text-danger my-5 text-center bebas-neue-regular">
                   Hmmm. I can't seem to find what you're looking for.
                 </h1>
-              </Route>
+              </SentryRoute>
             </Switch>
           </main>
-        </BrowserRouter>
+        </Router>
       </UserContext.Provider>
     </>
   );

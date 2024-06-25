@@ -1,15 +1,18 @@
 import { Route, Redirect } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { useContext } from "react";
+import * as Sentry from "@sentry/react";
 
 const ProtectedRoute = ({ path, exact, children }) => {
   const { userData } = useContext(UserContext);
 
-  if (!userData.token) return <Redirect to="/" />;
+  const SentryRoute = Sentry.withSentryRouting(Route);
+
+  if (!userData.token) return <Redirect push to="/" />;
   return (
-    <Route exact={exact} path={path}>
+    <SentryRoute exact={exact} path={path}>
       {children}
-    </Route>
+    </SentryRoute>
   );
 };
 
