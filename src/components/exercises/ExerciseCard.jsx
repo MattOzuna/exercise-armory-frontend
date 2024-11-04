@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const ExerciseCard = ({ exercise, add=null }) => {
   return (
-    <Card className="my-2">
+    <Card className="my-2" data-bs-theme="dark">
       <Card.Body>
         <Card.Title className="text-center bebas-neue-regular fs-2">
           {exercise.name}

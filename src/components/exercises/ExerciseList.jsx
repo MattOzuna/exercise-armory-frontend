@@ -58,7 +58,7 @@ const ExerciseList = () => {
 
   return (
     <>
-      <Container className="w-50">
+      <Container className="w-50" data-bs-theme="dark">
         <Row>
           <div className="text-center my-4">
             <h2 className="bebas-neue-regular">Find an Exercise</h2>

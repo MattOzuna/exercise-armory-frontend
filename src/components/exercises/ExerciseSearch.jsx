@@ -15,7 +15,7 @@ const ExerciseSearch = ({ exercises }) => {
   };
 
   return (
-    <Container className="w-50">
+    <Container className="fluid w-50" data-bs-theme="dark">
       <Row>
         <input
           type="text"
@@ -24,8 +24,8 @@ const ExerciseSearch = ({ exercises }) => {
           className="form-control rounded-pill"
         />
       </Row>
-      <Row className="justify-content-center">
-        <ListGroup>
+      <Row className="mx-auto pl-1">
+        <ListGroup className="px-auto">
           {foundExercises.slice(0, 5).map((exercise) => (
             <ListGroup.Item key={exercise.id}>
               <Link

@@ -62,7 +62,7 @@ const UserDetails = () => {
   }
 
   return (
-    <Container className="my-5 w-75">
+    <Container className="my-5 w-75" data-bs-theme="dark">
       <Row>
         <Card>
           <Card.Body>

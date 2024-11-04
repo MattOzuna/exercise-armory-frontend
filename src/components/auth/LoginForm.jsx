@@ -43,7 +43,7 @@ const LoginForm = ({ login }) => {
   }
 
   return (
-    <div className="w-50 mx-auto text-center">
+    <div className="w-50 mx-auto text-center" data-bs-theme="dark">
       <Form onSubmit={handleSubmit}>
         <h2 className="my-4 bebas-neue-regular">Login</h2>
         {errors.map((error) => (

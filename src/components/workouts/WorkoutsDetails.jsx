@@ -100,7 +100,7 @@ const WorkoutsDetails = () => {
   }
 
   return (
-    <Container className="my-5 w-75">
+    <Container className="my-5 w-75" data-bs-theme="dark">
       <Row>
         <h1 className="text-center bebas-neue-regular fs-2">
           Workout: {workout.date}
