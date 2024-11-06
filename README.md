@@ -4,7 +4,8 @@
 
 [The Exercise Armory](https://exercise-armory-frontend.onrender.com)
 
-[![Watch the video](https://raw.githubusercontent.com/MattOzuna/exercise-armory-frontend/main/public/img/Exercise_armory_demo_vid.mp4)](https://raw.githubusercontent.com/MattOzuna/exercise-armory-frontend/main/public/img/Exercise_armory_demo_vid.mp4)
+
+https://github.com/user-attachments/assets/d83cfddb-29b3-471a-b6ec-89f5c2acb4f9
 
 The Exercise Armory is a frontend web application built with React and React Router. This app provides a user-friendly interface for managing exercises and workouts. Users can register, log in, view exercise details, and manage their workout routines. The application includes protected routes to ensure that only authenticated users can access certain features. The App was deployed using [Render](https://render.com/). 
 
